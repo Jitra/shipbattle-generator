@@ -1,8 +1,8 @@
 {
-  "name": "shipbattle",
-  "version": "1.0.8",
-  "description": "Produce universal library with webpack and es6",
-  "main": "lib/shipbattle.min.js",
+  "name": "@yufuzu/shipbattle-board",
+  "version": "1.0.39",
+  "description": "Creates random maps for battleship game",
+  "main": "lib/board-generator.min.js",
   "scripts": {
     "lint": "eslint src",
     "v:patch": "npm version --no-git-tag-version patch",
@@ -11,23 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/krasimir/shipbattle.git"
+    "url": "https://github.com/Jitra/shipbattle-generator.git"
   },
   "keywords": [
-    "webpack",
-    "es6",
-    "starter",
-    "library",
-    "universal",
-    "umd",
-    "commonjs"
+    "shipbattle",
+    "generator",
+    "map",
+    "web worker"
   ],
-  "author": "Krasimir Tsonev",
+  "author": "Mikołaj Woźniak",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/krasimir/shipbattle/issues"
+    "url": "https://github.com/Jitra/shipbattle-generator/issues"
   },
-  "homepage": "https://github.com/krasimir/shipbattle",
+  "homepage": "https://github.com/Jitra/shipbattle-generator",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",
@@ -39,6 +36,7 @@
     "babel-preset-env": "^7.0.0-beta.3",
     "babel-register": "^7.0.0-beta.3",
     "chai": "^4.1.2",
+    "copy-pkg-json-webpack-plugin": "0.0.38",
     "cross-env": "^5.2.0",
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
@@ -51,6 +49,7 @@
     "webpack": "^4.12.2",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.14",
+    "worker-loader": "^2.0.0",
     "yargs": "^10.0.3"
   },
   "nyc": {

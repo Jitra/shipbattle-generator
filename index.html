@@ -3,14 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="lib/shipbattle.min.js"></script>
-    <script>
-      const cat = new shipbattle.Cat('Catty');
-      const dog = new shipbattle.Dog();
+    <style rel="stylesheet">
+        .field {
+            float: left;
+            box-sizing: border-box;
+            border: solid 1px white;
+        }
 
-    </script>
+        .field-label {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
 </head>
 <body>
-<h1>Library test</h1>
+<h1>Ship battle map generator</h1>
+<script type="text/javascript" src="lib/board-generator.min.js"></script>
+<script type="text/javascript">
+
+  const fieldSize = 40;
+  const mapSize = 10;
+  // console.log(BoardGenerator);
+  let board = new BoardGenerator.BoardGenerator();
+
+  const boardView = document.createElement('div');
+  boardView.style['margin-top'] = '20px';
+  boardView.style.width = fieldSize * mapSize + 'px';
+  boardView.style.height = fieldSize * mapSize + 'px';
+  document.querySelector('body').append(boardView);
+
+  function createBoard(index) {
+    boardView.innerHTML = '...Loading';
+
+    board.randomMap(mapSize, mapSize, [
+      board.ship('CRUISER-5', 5),
+      board.ship('CRUISER-4', 4),
+      board.ship('CRUISER-4', 4),
+      board.ship('CRUISER-3', 3),
+      board.ship('CRUISER-3', 3),
+      board.ship('CRUISER-2', 2),
+      board.ship('CRUISER-2', 2),
+      board.ship('CRUISER-2', 2),
+      board.ship('CRUISER-2', 2),
+      board.ship('CRUISER-1', 1),
+      board.ship('CRUISER-1', 1),
+      board.ship('CRUISER-1', 1),
+      board.ship('CRUISER-1', 1),
+      board.ship('CRUISER-1', 1)
+    ]).then(fields => {
+      setTimeout(() => {
+        createBoard(++index);
+      }, 5000);
+
+      let fieldsHTML = '';
+
+      fields.forEach(field => {
+        let bgColor = field.ship ? 'red' : 'grey';
+        bgColor = field.marked ? 'blue' : bgColor;
+        let text = field.ship
+          ? field.ship.name[0] + field.ship.name.slice(field.ship.name.length - 2)
+          : '';
+        fieldsHTML += '' +
+          '<div class="field" style="width: ' + fieldSize + 'px; height:' + fieldSize + 'px; background: ' + bgColor + '">' +
+          '<p class="field-label" style="line-height: 40px;">' +
+          text + ' </p>' +
+          '</div>';
+        boardView.innerHTML = fieldsHTML;
+      });
+
+    }, error => {
+      console.error(index, error);
+      setTimeout(() => {
+        createBoard(++index);
+      }, 500);
+    });
+
+  }
+
+  createBoard(1);
+
+</script>
 </body>
 </html>
