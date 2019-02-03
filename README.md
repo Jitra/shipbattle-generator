@@ -20,24 +20,24 @@ Asynchronous, Web Worker based battleship map generator in JS
 ```javascript
 import {BoardGenerator} from '@yufuzu/shipbattle-board'
 
-const board = new shipbattle.BoardGenerator();
+const generator = new BoardGenerator();
 const mapWidth = 10;
 const mapHeight = 10;
 
- board.randomMap(mapWidth, mapHeight, [
-      board.ship('CRUISER-5', 5),
-      board.ship('CRUISER-4', 4),
-      board.ship('CRUISER-4', 4),
-      board.ship('CRUISER-3', 3),
-      board.ship('CRUISER-3', 3),
-      board.ship('CRUISER-2', 2),
-      board.ship('CRUISER-2', 2),
-      board.ship('CRUISER-2', 2),
-      board.ship('CRUISER-2', 2),
-      board.ship('CRUISER-1', 1),
-      board.ship('CRUISER-1', 1),
-      board.ship('CRUISER-1', 1),
-      board.ship('CRUISER-1', 1),
-      board.ship('CRUISER-1', 1)
+ generator.randomMap(mapWidth, mapHeight, [
+      generator.ship('CRUISER-5', 5),
+      generator.ship('CRUISER-4', 4),
+      generator.ship('CRUISER-4', 4),
+      generator.ship('CRUISER-3', 3),
+      generator.ship('CRUISER-3', 3),
+      generator.ship('CRUISER-2', 2),
+      generator.ship('CRUISER-2', 2),
+      generator.ship('CRUISER-2', 2),
+      generator.ship('CRUISER-2', 2),
+      generator.ship('CRUISER-1', 1),
+      generator.ship('CRUISER-1', 1),
+      generator.ship('CRUISER-1', 1),
+      generator.ship('CRUISER-1', 1),
+      generator.ship('CRUISER-1', 1)
     ]).then(fields => console.log(fields));
 ```
